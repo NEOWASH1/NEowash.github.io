@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo Wash | Lavado y Detallado Automotriz</title>
+    <style>
+        /* VARIABLES DE COLOR (Blanco, Azul y Amarillo) */
+        :root {
+            --blanco-principal: #ffffff;
+            --blanco-fondo: #f8f9fa;
+            --azul-oscuro: #0a2540;
+            --azul-brillante: #007bff;
+            --amarillo-neon: #ffdd00;
+            --gris-texto: #333333;
+            --verde-whatsapp: #25d366;
+        }
+
+        /* ESTILOS GENERALES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--blanco-fondo);
+            color: var(--gris-texto);
+            line-height: 1.6;
+        }
+
+        /* ENCABEZADO (NAVBAR) */
+        header {
+            background-color: var(--azul-oscuro);
+            color: var(--blanco-principal);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--amarillo-neon);
+        }
+
+        nav a {
+            color: var(--blanco-principal);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--amarillo-neon);
+        }
+
+        /* SECCIÓN HERO (BIENVENIDA) */
+        .hero {
+            background: linear-gradient(135deg, var(--azul-oscuro) 60%, var(--azul-brillante));
+            color: var(--blanco-principal);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            color: var(--amarillo-neon);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+        }
+
+        .btn-principal {
+            background-color: var(--amarillo-neon);
+            color: var(--azul-oscuro);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s, background-color 0.2s;
+            display: inline-block;
+        }
+
+        .btn-principal:hover {
+            transform: scale(1.05);
+            background-color: #e6c600;
+        }
+
+        /* SECCIÓN PRECIOS POR TIPO DE VEHÍCULO */
+        .precios-tipos {
+            max-width: 1200px;
+            margin: -3rem auto 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .tarjeta-precio {
+            background-color: var(--blanco-principal);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--azul-brillante);
+        }
+
+        .tarjeta-precio.destacado {
+            border-top: 5px solid var(--amarillo-neon);
+        }
+
+        .tarjeta-precio h3 {
+            font-size: 1.5rem;
+            color: var(--azul-oscuro);
+            margin-bottom: 1rem;
+        }
+
+        .costo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--azul-brillante);
+            margin-bottom: 0.5rem;
+        }
+
+        /* SECCIÓN DE SERVICIOS */
+        .servicios {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--azul-oscuro);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .titulo-seccion::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--amarillo-neon);
+            margin: 10px auto 0 auto;
+        }
+
+        .grid-servicios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .bloque-servicio {
+            background-color: var(--blanco-principal);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .bloque-servicio:hover {
+            transform: translateY(-5px);
+        }
+
+        .bloque-servicio h4 {
+            font-size: 1.3rem;
+            color: var(--azul-brillante);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* SECCIÓN DE PREGUNTAS FRECUENTES (FAQ) */
+        .faq-seccion {
+            background-color: #f1f3f5;
+            padding: 4rem 2rem;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .faq-item {
+            background-color: var(--blanco-principal);
+            padding: 1.8rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .faq-item h4 {
+            font-size: 1.2rem;
+            color: var(--azul-oscuro);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-item p {
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        /* SECCIÓN DE CONTACTO Y HORARIOS */
+        .contacto-seccion {
+            background-color: var(--blanco-principal);
+            padding: 4rem 2rem;
+            box-shadow: 0 -4px 6px rgba(0,0,0,0.02);
+        }
+
+        .contacto-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .info-contacto h3 {
+            font-size: 2rem;
+            color: var(--azul-oscuro);
+            margin-bottom: 1.5rem;
+        }
+
+        .dato-contacto {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.2rem;
+        }
+
+        .dato-contacto a {
+            color: var(--azul-brillante);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+
+        .dato-contacto a:hover {
+            color: var(--azul-oscuro);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--verde-whatsapp);
+            color: white !important;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128c7e;
+            transform: scale(1.03);
+        }
+
+        /* BLOQUE DE HORARIOS */
+        .horarios-box {
+            background-color: var(--blanco-fondo);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 5px solid var(--azul-brillante);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .horarios-box h4 {
+            font-size: 1.4rem;
+            color: var(--azul-oscuro);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .horarios-box p {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .horarios-box .dia {
+            font-weight: bold;
+            color: var(--azul-brillante);
+        }
+
+        .mapa-container {
+            width: 100%;
+            height: 350px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .mapa-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* PIE DE PÁGINA (FOOTER) */
+        footer {
+            background-color: var(--azul-oscuro);
+            color: var(--blanco-principal);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">Neo <span>Wash</span></div>
+            <nav>
+                <a href="#precios">Precios</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#faq">Preguntas</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Estética y Detallado para tu Auto en <span>Neo Wash</span></h1>
+            <p>Devuélvele a tu vehículo el brillo y la frescura que se merece con nuestros servicios profesionales de limpieza y protección.</p>
+            <a href="https://wa.me/522201595757?text=Hola%20Neo%20Wash,%20me%20gustaría%20agendar%20una%20cita%20para%20mi%20auto" target="_blank" class="btn-principal">Agendar Cita por WhatsApp</a>
+        </div>
+    </section>
+
+    <section id="precios" class="precios-tipos">
+        <div class="tarjeta-precio">
+            <h3>Coches Pequeños</h3>
+            <div class="costo">$120</div>
+            <p>Autos compactos y sedanes estándar.</p>
+        </div>
+        <div class="tarjeta-precio destacado">
+            <h3>SUVs (Camionetas)</h3>
+            <div class="costo">$150</div>
+            <p>Camionetas familiares y de tamaño medio.</p>
+        </div>
+        <div class="tarjeta-precio">
+            <h3>Pickups</h3>
+            <div class="costo">$180</div>
+            <p>Camionetas grandes y vehículos de carga.</p>
+        </div>
+    </section>
+
+    <section id="servicios" class="servicios">
+        <h2 class="titulo-seccion">Nuestros Servicios</h2>
+        
+        <div class="grid-servicios">
+            <div class="bloque-servicio">
+                <h4>✨ Lavado de Interiores y Vestiduras</h4>
+                <p>Eliminamos manchas, suciedad profunda y malos olores de tus asientos (tela o piel), alfombras, cielo y paneles de las puertas. Usamos productos especiales que no dañan los materiales.</p>
+            </div>
+
+            <div class="bloque-servicio">
+                <h4>🧽 Lavado de Exteriores</h4>
+                <p>Remoción de partículas de polvo, lodo y contaminantes utilizando champú con pH neutro y microfibras de alta calidad para evitar los molestos rayones en la carrocería.</p>
+            </div>
+
+            <div class="bloque-servicio">
+                <h4>⚙️ Lavado de Motor</h4>
+                <p>Limpieza segura y detallada del compartimiento del motor. Eliminamos grasa acumulada y suciedad utilizando desengrasantes dieléctricos y protectores que cuidan las mangueras y conexiones eléctricas.</p>
+            </div>
+
+            <div class="bloque-servicio">
+                <h4>🏎️ Pulido y Encerado</h4>
+                <p>Eliminamos micro-rayas superficiales y devolvemos la profundidad al color de tu auto. Aplicamos una capa de cera de alta calidad que protege la pintura contra los rayos UV y el polvo del camino.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-seccion">
+        <h2 class="titulo-seccion">Preguntas Frecuentes</h2>
+        <div class="faq-container">
+            
+            <div class="faq-item">
+                <h4>⏱️ ¿Cuánto tiempo tardan en lavar un carro?</h4>
+                <p>Nos tomamos el tiempo necesario para garantizar la máxima calidad. El tiempo estimado de entrega es de aproximadamente <strong>una hora</strong> por vehículo.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>💳 ¿Aceptan pagos con tarjeta o solo efectivo?</h4>
+                <p>Para tu comodidad, aceptamos pagos en <strong>efectivo, tarjetas de débito y transferencias bancarias</strong>.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contacto" class="contacto-seccion">
+        <div class="contacto-container">
+            
+            <div class="info-contacto">
+                <h3>¿Listo para estrenar auto de nuevo?</h3>
+                <p style="margin-bottom: 1.5rem; color: #555;">Ponte en contacto con nosotros para agendar tu cita o visítanos directamente en San Antonio de la Cal.</p>
+                
+                <div class="dato-contacto">
+                    <span>💬</span> 
+                    <a href="https://wa.me/522201595757?text=Hola%20Neo%20Wash,%20me%20gustaría%20agendar%20una%20cita%20para%20mi%20auto" target="_blank" class="btn-whatsapp">Mandar WhatsApp</a>
+                </div>
+                
+                <div class="dato-contacto">
+                    <span>📸</span> 
+                    <a href="https://www.instagram.com/lavado_motors?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">@lavado_motors</a>
+                </div>
+
+                <div class="dato-contacto">
+                    <span>📍</span> 
+                    <span style="font-size: 1rem; color: #666;">6ta Secc 24 de Febrero, Zona Crucero, San Antonio de la Cal, Oax.</span>
+                </div>
+            </div>
+
+            <div class="horarios-box">
+                <h4>📅 Horario de Atención</h4>
+                <p><span class="dia">Lunes a Sábado:</span><br>9:00 AM – 7:00 PM</p>
+                <p style="margin-top: 10px; color: #777; font-size: 0.95rem;"><span class="dia" style="color: #d9534f;">Domingo:</span> Cerrado</p>
+            </div>
+
+            <div class="mapa-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15261.272304886566!2d-96.71701385!3d17.0321287!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c72223bb3baab7%3A0x6e9f16b2512f71f!2sSan%20Antonio%20de%20la%20Cal%2C%20Oax.!5e0!3m2!1ses-419!2smx!4v1716600000000!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Neo Wash - Calidad y Brillo Automotriz. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
